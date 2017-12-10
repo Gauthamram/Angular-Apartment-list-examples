@@ -1,0 +1,40 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top"></nav>
+<div class="container">
+  <div class = "starter-template"> 
+    <h3 class="text-muted">Animus Apartment</h3>
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+ <form [formGroup]="rForm">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="email" [(ngModel)]="apartment.email" required/>
+          <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">{{ Alert }}</div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="moveindate">Move In Date</label>
+          <input type="date" class="form-control" formControlName="move_in_date" [(ngModel)]="apartment.moveInDate" required>
+          <div class="alert" *ngIf="!rForm.controls['move_in_date'].valid && rForm.controls['move_in_date'].touched">Field needs to be an Email Address</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="town">City</label>
+          <input type="text" class="form-control" formControlName="town" placeholder="Munster" [(ngModel)]="apartment.town" required>
+          <div class="alert" *ngIf="!rForm.controls['town'].valid && rForm.controls['town'].touched">{{ Alert }}</div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="country">Country</label>
+          <input type="text" class="form-control" formControlName="country" placeholder="Germany" [(ngModel)]="apartment.country" required>
+          <div class="alert" *ngIf="!rForm.controls['country'].valid && rForm.controls['country'].touched">{{ Alert }}</div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="postcode">postcode</label>
+          <input type="number" class="form-control" formControlName="post_code" placeholder="48167" [(ngModel)]="apartment.postCode" required>
+          <div class="alert" *ngIf="!rForm.controls['post_code'].valid && rForm.controls['post_code'].touched">Field needs to be 5 charadeters and NUmbers</div>
+        </div>
+      </div>
+      <button class="btn btn-primary"  (click)="editApartment(apartment)" type="submit">Save Apartment</button>
+      <button class="btn btn-danger"  (click)="deleteApartment(apartment)" type="submit">Delete Apartment</button>
+    </form>
+</div>
